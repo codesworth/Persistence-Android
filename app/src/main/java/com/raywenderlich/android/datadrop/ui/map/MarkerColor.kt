@@ -51,5 +51,12 @@ enum class MarkerColor(val displayString: String) {
           "Blue" -> BLUE
           else -> RED
         }
+
+      fun createMarkerColor(color:Int) =
+              when (color){
+                  1 -> GREEN
+                  2 -> BLUE
+                  else -> RED
+              }
   }
 }
