@@ -46,5 +46,9 @@ interface MapContract {
     fun getDrops(): List<Drop>
     fun addDrop(drop: Drop)
     fun clearAllDrops()
+    fun saveMarkerColor(color:String)
+    fun getMarkerColor():String
+    fun saveMapType(type: String)
+    fun getMapType():String
   }
 }
