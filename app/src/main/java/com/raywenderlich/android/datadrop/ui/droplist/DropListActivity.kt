@@ -39,7 +39,9 @@ class DropListActivity : AppCompatActivity(), DropListAdapter.DropListAdapterLis
 
     dropsViewModel.getDrops().observe(this, Observer<List<Drop>>{ drops ->
       adapter.updateDrops(drops ?: emptyList())
+      checkForEmptyState()
     })
+
   }
 
 //  override fun showDrops(drops: List<Drop>) {
@@ -55,13 +57,7 @@ class DropListActivity : AppCompatActivity(), DropListAdapter.DropListAdapterLis
 
 
   override fun deleteDropAtPosition(drop: Drop, position: Int) {
-    dropsViewModel.clearDrop(drop, object: ClearDropsListenr{
-      override fun dropCleared(drop: Drop) {
-        adapter.removeDropAtPosition(position)
-        checkForEmptyState()
-      }
 
-    })
   }
 
   private fun checkForEmptyState() {

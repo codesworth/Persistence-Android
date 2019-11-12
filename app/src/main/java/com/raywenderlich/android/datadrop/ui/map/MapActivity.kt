@@ -267,19 +267,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
   private fun addDrop(latLng: LatLng, message: String, color:Int) {
     val drop = Drop(latLng, message,markerColor = color)
-    dropsViewModel.insert(drop, object: DropInsertListener{
-      override fun dropInsert(drop: Drop) {
-        showDrop(drop)
-      }
-    })
+    dropsViewModel.insert(drop)
   }
 
   private fun clearAllDrops() {
-    dropsViewModel.clearAllDrops(object: ClearAllDropsListener{
-      override fun allDropsCleared() {
-        map.clear()
-      }
-    })
+    dropsViewModel.clearAllDrops( )
 
   }
 }

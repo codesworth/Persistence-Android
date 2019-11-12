@@ -11,19 +11,19 @@ import com.raywenderlich.android.datadrop.app.DataDropApplication
 import com.raywenderlich.android.datadrop.model.DropDBSchema.DropTable.Columns
 import java.io.IOException
 
-class SQLiteRepository : DropRepository{
+class SQLiteRepository {
 
     private val database = DropBDHelper(DataDropApplication.getAppContext()).writableDatabase
 
-    override fun addDrop(drop: Drop, listener: DropInsertListener) {
+     fun addDrop(drop: Drop) {
         val contentValues = getDropContentValues(drop)
         val result = database.insert(DropDBSchema.DropTable.NAME,null,contentValues)
-        if (result != -1L){
-            listener.dropInsert(drop)
-        }
+//        if (result != -1L){
+//            listener.dropInsert(drop)
+//        }
     }
 
-    override fun getDrops(): LiveData<List<Drop>> {
+     fun getDrops(): LiveData<List<Drop>> {
 
         val liveData = MutableLiveData<List<Drop>>()
         val drops = mutableListOf<Drop>()
@@ -46,7 +46,7 @@ class SQLiteRepository : DropRepository{
         return liveData
     }
 
-    override fun clearDrop(drop: Drop, listenr: ClearDropsListenr) {
+    fun clearDrop(drop: Drop, listenr: ClearDropsListenr) {
         val result = database.delete(
                 DropDBSchema.DropTable.NAME,
                 Columns.ID + " = ?" , arrayOf(drop.id)
@@ -55,7 +55,7 @@ class SQLiteRepository : DropRepository{
         if (result != 0)listenr.dropCleared(drop)
     }
 
-    override fun clearAllDrops(listenr: ClearAllDropsListener) {
+    fun clearAllDrops(listenr: ClearAllDropsListener) {
         val result = database.delete(DropDBSchema.DropTable.NAME,null,null)
         if (result != 0)listenr.allDropsCleared()
 

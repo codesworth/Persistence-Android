@@ -13,9 +13,9 @@ class DropsViewModel(application: Application):AndroidViewModel(application) {
 
     fun getDrops() = allDrops
 
-    fun insert(drop:Drop, listener: DropInsertListener) = repository.addDrop(drop,listener)
+    fun insert(drop:Drop) = repository.addDrop(drop)
 
-    fun clearDrop(drop: Drop, listenr: ClearDropsListenr) = repository.clearDrop(drop,listenr)
+    fun clearDrop(drop: Drop) = repository.clearDrop(drop)
 
-    fun clearAllDrops(listener: ClearAllDropsListener) = repository.clearAllDrops(listener)
+    fun clearAllDrops() = repository.clearAllDrops()
 }

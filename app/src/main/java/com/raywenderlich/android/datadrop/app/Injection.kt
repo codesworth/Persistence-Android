@@ -32,13 +32,14 @@
 package com.raywenderlich.android.datadrop.app
 
 import com.raywenderlich.android.datadrop.model.DropRepository
+import com.raywenderlich.android.datadrop.model.RoomRepository
 import com.raywenderlich.android.datadrop.model.SQLiteRepository
 //import com.raywenderlich.android.datadrop.ui.droplist.DropListPresenter
 //import com.raywenderlich.android.datadrop.ui.map.MapPresenter
 
 object Injection {
 
-  fun provideDropRepository(): DropRepository = SQLiteRepository()
+  fun provideDropRepository(): DropRepository = RoomRepository()
 
 //  fun provideMapPresenter(view: MapContract.View): MapContract.Presenter {
 //    return MapPresenter(provideDropRepository(), view)

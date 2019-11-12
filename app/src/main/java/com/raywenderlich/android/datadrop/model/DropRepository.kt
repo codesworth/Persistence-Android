@@ -37,8 +37,8 @@ import com.raywenderlich.android.datadrop.ViewModel.ClearDropsListenr
 import com.raywenderlich.android.datadrop.ViewModel.DropInsertListener
 
 interface DropRepository {
-  fun addDrop(drop: Drop, listener:DropInsertListener)
+  fun addDrop(drop: Drop)
   fun getDrops(): LiveData<List<Drop>>
-  fun clearDrop(drop: Drop, listener: ClearDropsListenr)
-  fun clearAllDrops(listener:ClearAllDropsListener)
+  fun clearDrop(drop: Drop)
+  fun clearAllDrops()
 }
