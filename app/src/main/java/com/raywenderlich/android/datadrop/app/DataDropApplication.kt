@@ -32,9 +32,13 @@
 package com.raywenderlich.android.datadrop.app
 
 import android.app.Application
+import android.arch.persistence.db.SupportSQLiteDatabase
 import android.arch.persistence.room.Room
+import android.arch.persistence.room.RoomDatabase
 import android.content.Context
+import android.os.AsyncTask
 import com.raywenderlich.android.datadrop.model.DropDatabase
+import com.raywenderlich.android.datadrop.model.MarkerColor
 
 
 class DataDropApplication : Application() {
@@ -51,6 +55,30 @@ class DataDropApplication : Application() {
 
     super.onCreate()
 
-    database = Room.databaseBuilder(this,DropDatabase::class.java, "drop_database").build()
+    database = Room.databaseBuilder(this,DropDatabase::class.java, "drop_database").addCallback(roomatabaseCallback).build()
+  }
+
+
+  private val roomatabaseCallback = object: RoomDatabase.Callback(){
+    override fun onOpen(db: SupportSQLiteDatabase) {
+      super.onOpen(db)
+      PopulaDBAsync(database).execute()
+    }
+  }
+
+  private class PopulaDBAsync(db:DropDatabase):AsyncTask<Void, Void, Void>() {
+
+    private val markerDAo = database.markerDAO()
+
+    override fun doInBackground(vararg params: Void?): Void? {
+      var markerColor = MarkerColor(MarkerColor.RED_COLOR)
+      markerDAo.insert(markerColor)
+      markerColor = MarkerColor(MarkerColor.GREEN_COLOR)
+      markerDAo.insert(markerColor)
+      markerColor = MarkerColor(MarkerColor.BLUE_COLOR)
+      markerDAo.insert(markerColor)
+
+      return null
+    }
   }
 }

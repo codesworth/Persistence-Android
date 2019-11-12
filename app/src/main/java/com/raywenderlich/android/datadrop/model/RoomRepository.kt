@@ -20,16 +20,27 @@ class RoomRepository:DropRepository {
     override fun getDrops() = alldrops
 
     override fun clearDrop(drop: Drop) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        DeleteAsyncTask(dropDAO).execute(drop)
     }
 
     override fun clearAllDrops() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val drops = alldrops.value?.toTypedArray()
+        if (drops != null){
+            DeleteAsyncTask(dropDAO).execute(*drops)
+        }
     }
 
     private class InsertAsyncTask internal constructor(private val dao:DropDAO):AsyncTask<Drop,Void,Void>(){
         override fun doInBackground(vararg params: Drop): Void? {
             dao.insertDrop(params[0])
+            return null
+        }
+    }
+
+
+    private class DeleteAsyncTask internal constructor(private val dao:DropDAO):AsyncTask<Drop, Void, Void>(){
+        override fun doInBackground(vararg params: Drop): Void? {
+            dao.clearDrops(*params)
             return null
         }
     }

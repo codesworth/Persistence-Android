@@ -29,34 +29,32 @@
  *
  */
 
-package com.raywenderlich.android.datadrop.ui.map
+package com.raywenderlich.android.datadrop.model
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
 
-enum class MarkerColor(val displayString: String) {
-  RED("Red"), GREEN("Green"), BLUE("Blue");
 
-  fun getMarkerBitmapDescriptor() =
-      when (this) {
-        MarkerColor.GREEN -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
-        MarkerColor.BLUE -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
+@Entity(tableName = "marker_color_table")
+class MarkerColor(@PrimaryKey val displayString: String) {
+
+  //RED("Red"), GREEN("Green"), BLUE("Blue");
+
+
+    companion object{
+        const val RED_COLOR = "Red"
+        const val GREEN_COLOR = "Green"
+        const val BLUE_COLOR = "Blue"
+    }
+
+  fun getMarkerBitmapDescriptor(color: String) =
+      when (color) {
+        GREEN_COLOR -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
+        BLUE_COLOR -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
         else -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)
       }
 
-  companion object {
-    fun createMarkerColor(displayString: String) =
-        when (displayString) {
-          "Green" -> GREEN
-          "Blue" -> BLUE
-          else -> RED
-        }
 
-      fun createMarkerColor(color:Int) =
-              when (color){
-                  1 -> GREEN
-                  2 -> BLUE
-                  else -> RED
-              }
-  }
 }

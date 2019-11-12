@@ -51,12 +51,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.raywenderlich.android.datadrop.R
-import com.raywenderlich.android.datadrop.ViewModel.ClearAllDropsListener
-import com.raywenderlich.android.datadrop.ViewModel.DropInsertListener
 import com.raywenderlich.android.datadrop.ViewModel.DropsViewModel
-import com.raywenderlich.android.datadrop.app.Injection
 import com.raywenderlich.android.datadrop.model.Drop
 import com.raywenderlich.android.datadrop.model.MapPrefs
+import com.raywenderlich.android.datadrop.model.MarkerColor
 import com.raywenderlich.android.datadrop.ui.droplist.DropListActivity
 
 

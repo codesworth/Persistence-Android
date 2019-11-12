@@ -20,7 +20,7 @@ object MapPrefs {
 
 
 
-    fun getMarkerColor() = sharedPrefs().getString(KEY_MARKER_COLOR,"Red")
+    fun getMarkerColor() = sharedPrefs().getString(KEY_MARKER_COLOR,MarkerColor.RED_COLOR)
 
     fun saveMapType(type:String){
         sharedPrefs().edit().putString(KEY_MAP_TYPE,type).apply()
