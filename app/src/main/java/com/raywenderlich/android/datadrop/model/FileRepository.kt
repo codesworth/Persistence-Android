@@ -1,5 +1,6 @@
 package com.raywenderlich.android.datadrop.model
 
+/*
 import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
@@ -94,4 +95,4 @@ object FileRepository:DropRepository {
         reader.close()
         return  sb.toString()
     }
-}
+}*/

@@ -31,7 +31,7 @@
 
 package com.raywenderlich.android.datadrop.model
 
-
+/*
 object InMemoryRepository : DropRepository {
 
   private val drops = HashMap<String, Drop>()
@@ -51,4 +51,4 @@ object InMemoryRepository : DropRepository {
   override fun clearAllDrops() {
     drops.clear()
   }
-}
+}*/

@@ -1,5 +1,5 @@
 package com.raywenderlich.android.datadrop.model
-
+/*
 import android.content.Context
 import com.google.gson.Gson
 import com.raywenderlich.android.datadrop.app.DataDropApplication
@@ -28,4 +28,4 @@ object SharedPrefsRepository:DropRepository {
     override fun clearAllDrops() {
         sharedPrefs().edit().clear().apply()
     }
-}
+}*/

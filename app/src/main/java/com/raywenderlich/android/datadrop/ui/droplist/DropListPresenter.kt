@@ -31,6 +31,7 @@
 
 package com.raywenderlich.android.datadrop.ui.droplist
 
+/*
 import com.raywenderlich.android.datadrop.model.Drop
 import com.raywenderlich.android.datadrop.model.DropRepository
 
@@ -49,3 +50,5 @@ class DropListPresenter(private val repo: DropRepository, private val view: Drop
     view.removeDropAtPosition(position)
   }
 }
+
+ */
