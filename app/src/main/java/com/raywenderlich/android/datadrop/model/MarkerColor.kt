@@ -47,14 +47,15 @@ class MarkerColor(@PrimaryKey val displayString: String) {
         const val RED_COLOR = "Red"
         const val GREEN_COLOR = "Green"
         const val BLUE_COLOR = "Blue"
+
+        fun getMarkerBitmapDescriptor(color: String) =
+                when (color) {
+                    GREEN_COLOR -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
+                    BLUE_COLOR -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
+                    else -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)
+                }
     }
 
-  fun getMarkerBitmapDescriptor(color: String) =
-      when (color) {
-        GREEN_COLOR -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
-        BLUE_COLOR -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
-        else -> BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)
-      }
 
 
 }
